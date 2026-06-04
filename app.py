@@ -51,6 +51,16 @@ def load_simulated_waveform_data():
     amplitude[t > 0.01] = 0 # Post-merger ringdown/cutoff
     strain = amplitude * np.sin(2 * np.pi * frequency * t)
     
+   # --- DEFAULT VISUALIZATION & KPI METRICS ---
+col1, col2, col3 = st.columns(3)
+with col1:
+    q_ratio = black_hole_mass / neutron_star_mass
+    st.markdown(f"<div class='metric-card'><b>Mass Ratio ($q$)</b><br><span style='font-size:24px; color:#2563EB;'>{q_ratio:.2f}</span></div>", unsafe_with_html=True)
+with col2:
+    chirp_mass = ((black_hole_mass * neutron_star_mass)**(3/5)) / ((black_hole_mass + neutron_star_mass)**(1/5))
+    st.markdown(f"<div class='metric-card'><b>Expected Chirp Mass</b><br><span style='font-size:24px; color:#2563EB;'>{chirp_mass:.2f} Mₒ</span></div>", unsafe_with_html=True)
+with col3:
+    st.markdown("<div class='metric-card'><b>Physics Paradigm</b><br><span style='font-size:20px; color:#10B981;'>Newtonian Coalescence</span></div>", unsafe_with_html=True)
     # Orbital radius shrinking over time
     radius = np.maximum(15, 100 * (0.01 - t + 1e-5)**0.25)
     
