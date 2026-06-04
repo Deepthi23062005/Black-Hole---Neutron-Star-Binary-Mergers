@@ -14,6 +14,11 @@ st.set_page_config(
 )
 
 # --- CUSTOM CSS FOR BETTER UI ---
+# --- CUSTOM CSS FOR BETTER UI ---
+# Combined into a single line string to prevent Python 3.13+ indentation parsing errors
+custom_css = "<style>.main-header {font-size: 36px; font-weight: bold; color: #1E3A8A; text-align: center; margin-bottom: 10px;} .sub-header {font-size: 18px; color: #4B5563; text-align: center; margin-bottom: 30px;} .metric-card {background-color: #F3F4F6; padding: 15px; border-radius: 10px; border-left: 5px solid #3B82F6;}</style>"
+
+st.markdown(custom_css, unsafe_with_html=True)
 st.markdown("""
     <style>
     .main-header {
